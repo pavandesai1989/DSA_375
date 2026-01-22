@@ -1,0 +1,38 @@
+https://www.geeksforgeeks.org/problems/fruit-into-baskets-1663137462/1
+Longest subarray with Atmost two distinct integers
+https://leetcode.com/problems/fruit-into-baskets/description/
+
+class Solution {
+  public:
+    int totalElements(vector<int> &arr) 
+    {
+        int n=arr.size();
+        int maxLen=0;
+        int l=0,r=0;
+        unordered_map<int,int> mpp;
+        
+        while(r<n)
+        {
+            //add to map
+            mpp[arr[r]]++;
+            
+            while(mpp.size()>2)
+            {
+                mpp[arr[l]]--;
+                
+                if(mpp[arr[l]]==0)
+                {
+                    mpp.erase(arr[l]);
+                }
+                l++;
+            }
+            
+            maxLen = max(maxLen,r-l+1);
+            
+            r++;
+            
+        }
+        
+        return maxLen;
+    }
+};
