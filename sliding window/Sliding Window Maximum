@@ -1,5 +1,14 @@
 https://leetcode.com/problems/sliding-window-maximum/description/
 
+check if curr ele >= back ele of queue and pop_back as it cannot be ans for any other window
+
+push index in deque
+
+if dq.front()<=i-k pop the ans which will be in front of the deque. as this idx will is not part of the curr window
+
+
+
+
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) 
