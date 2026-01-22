@@ -1,0 +1,27 @@
+https://leetcode.com/problems/minimum-size-subarray-sum/description/
+https://www.geeksforgeeks.org/problems/minimum-sum-of-subarray/1
+
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) 
+    {
+        int minLen=1e9;//vimp
+        int sum=0;
+        int n=nums.size();
+        int l=0,r=0;
+
+        while(r<n)
+        {
+            sum += nums[r];
+
+            while(sum >= target)
+            {
+                minLen = min(minLen,r-l+1);
+                sum -= nums[l];
+                l++;
+            }
+            r++;
+        }
+        return minLen == 1e9 ? 0 : minLen;//vimp
+    }
+};
